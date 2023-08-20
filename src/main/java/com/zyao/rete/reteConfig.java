@@ -12,9 +12,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config.LangKey("config.rete.general")
 public class reteConfig
 {
-    private static Configuration config;
-
-
     @Config.Comment("open killgetitem?")
     @Config.LangKey("config.rete.general.killgetitem")
     public static boolean killgetitem = true;
@@ -24,13 +21,14 @@ public class reteConfig
     @Config.RangeInt(min = 1, max = 64)
     public static int number = 1;
 
-    @Config.Comment("item")
-    @Config.LangKey("config.rete.general.item")
-    public static String item = "rete_10_rubles";
-
+    /*
+        @Config.Comment("item")
+        @Config.LangKey("config.rete.general.item")
+        public static String item = "rete_10_rubles";
+    */
     public reteConfig(FMLPreInitializationEvent event)
     {
-        config = new Configuration(event.getSuggestedConfigurationFile());
+        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
         config.load();
         config.save();
     }

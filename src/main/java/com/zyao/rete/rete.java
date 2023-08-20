@@ -1,6 +1,5 @@
 package com.zyao.rete;
 
-import com.zyao.rete.item.ItemDollar;
 import com.zyao.rete.item.ItemRegistryHandler;
 
 import net.minecraft.entity.Entity;
@@ -15,9 +14,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
-
-import java.io.IOException;
-import java.lang.reflect.Field;
 
 @Mod(modid = rete.MODID, name = rete.NAME, version = rete.VERSION, guiFactory = rete.GUIFACTORG)
 public class rete {
@@ -35,6 +31,7 @@ public class rete {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        //noinspection InstantiationOfUtilityClass
         new reteConfig(event);
     }
 
@@ -48,7 +45,7 @@ public class rete {
     public static class ModEvents {
 
         @SubscribeEvent
-        public static void onPlayerDeath(LivingDeathEvent event) throws IOException {
+        public static void onPlayerDeath(LivingDeathEvent event) {
             Entity victim = event.getEntity();
             Entity killer = event.getSource().getTrueSource();
             if (victim instanceof EntityPlayer || killer instanceof EntityPlayer) {
@@ -60,21 +57,28 @@ public class rete {
             }
         }
 
+        /*
         public static void giveitem(EntityPlayer player) throws IOException {
             String item = reteConfig.item;
             try {
                 Field field = ItemRegistryHandler.class.getField(item);
                 Object value = field.get(null);
 
-                if (value instanceof ItemDollar) {
-                    ItemDollar reteDollarItem = (ItemDollar) value;
+                if (value instanceof Item_10_Rubles) {
+                    Item_10_Rubles reteDollarItem = (Item_10_Rubles) value;
                     int number = reteConfig.number;
-                    ItemStack diamond = new ItemStack(reteDollarItem, number);
+                    ItemStack diamond = new ItemStack(ItemRegistryHandler.rete_10_rubles, number);
                     player.inventory.addItemStackToInventory(diamond);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        */
+        public static void giveitem(EntityPlayer player) {
+            int number = reteConfig.number;
+            ItemStack diamond = new ItemStack(ItemRegistryHandler.rete_10_rubles, number);
+            player.inventory.addItemStackToInventory(diamond);
         }
     }
 }
