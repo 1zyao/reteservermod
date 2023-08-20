@@ -1,0 +1,8 @@
+itemGroup.rete=RETE Server
+item.rete.rubles.10.name=10 rubles
+item.rete.rubles.100.name=100 rubles
+item.rete.rubles.1000.name=1000 rubles
+config.rete.general.killgetitem=Whether to enable giving items when killing players.
+config.rete.general.item=Item given(Only for items in this mod).
+config.rete.general.number=Number of items.
+config.rete.gui.title=RETE Server config GUI

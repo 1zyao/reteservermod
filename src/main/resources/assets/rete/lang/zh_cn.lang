@@ -1,0 +1,8 @@
+itemGroup.rete=RETE服务器
+item.rete.rubles.10.name=10卢布
+item.rete.rubles.100.name=100卢布
+item.rete.rubles.1000.name=1000卢布
+config.rete.general.killgetitem=是否开启击杀玩家给予物品
+config.rete.general.item=给予的物品(仅限本模组物品)
+config.rete.general.number=物品数量
+config.rete.gui.title=RETE服务器模组设置界面
